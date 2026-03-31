@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bul Karayı Al Parayı</title>
+    <meta name="description" content="Eğlenceli klasik bul karayı al parayı üç bardak oyunu.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="layout-wrapper">
+        <div class="game-container">
+        <header>
+            <h1>Bul Karayı Al Parayı</h1>
+            <div class="stats">
+                <p>Skor: <span id="score">0</span></p>
+                <p>Seviye: <span id="level">1</span></p>
+            </div>
+        </header>
+
+        <div class="play-area">
+            <div class="cup" id="cup-0"></div>
+            <div class="cup" id="cup-1"></div>
+            <div class="cup" id="cup-2"></div>
+            <div class="ball" id="ball"></div>
+        </div>
+
+        <div class="controls">
+            <button id="start-btn">Oyunu Başlat</button>
+            <p id="message" class="message">Başlamak için butona tıkla!</p>
+        </div>
+    </div>
+
+    <!-- Analytics Dashboard -->
+    <div class="analytics-container">
+        <h2>Oyun Analizi</h2>
+        
+        <div class="stat-boxes">
+            <div class="stat-box">
+                <h4>Başarı Oranı</h4>
+                <p id="win-rate">0%</p>
+                <small>Doğru / Toplam</small>
+            </div>
+            <div class="stat-box">
+                <h4>Olasılık Durumu</h4>
+                <p id="probability-stat">33.3%</p>
+                <small>Kazanma İhtimali</small>
+            </div>
+        </div>
+
+        <div class="chart-wrapper">
+            <canvas id="speedChart"></canvas>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

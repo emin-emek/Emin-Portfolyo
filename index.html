@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolyo | Ana Sayfa</title>
+    <meta name="description" content="Kişisel portfolyo ana sayfası.">
+    <!-- Google Fonts entegrasyonu (Modern görünüm için Montserrat fontu) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #3b82f6;
+            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --accent-glow: rgba(59, 130, 246, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            /* Daha canlı, renkli ve uzay / yapay zeka konseptli arka plan */
+            background: linear-gradient(135deg, rgba(39, 21, 89, 0.4), rgba(4, 18, 56, 0.2), rgba(139, 92, 246, 0.3)), url('uzay_ai_arkaplan.png') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Daha Canlı, Oynak ve Renkli Neon Parlamalar */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 80vw;
+            height: 80vw;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.95; /* Etkiyi arttırarak sahneyi çok daha canlı ve renkli hale getirir */
+            animation: moveOrbs 8s infinite alternate ease-in-out;
+            pointer-events: none;
+            mix-blend-mode: screen; /* Renklerin ışıl ışıl parlamasını sağlar */
+        }
+
+        body::before {
+            background: radial-gradient(circle, #ff007f 0%, transparent 60%);
+            top: -20%;
+            left: -10%;
+        }
+
+        body::after {
+            background: radial-gradient(circle, #00f3ff 0%, transparent 60%);
+            bottom: -20%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        @keyframes moveOrbs {
+            0% { transform: scale(0.9) translate(0, 0); }
+            50% { transform: scale(1.2) translate(15%, 20%); }
+            100% { transform: scale(0.8) translate(-15%, -10%); }
+        }
+
+        /* Arka planın BİR PARÇASI gibi duran erimiş Cam Efekti Kartı */
+        .portfolio-container {
+            background: rgba(255, 255, 255, 0.04); /* Neredeyse tamamen şeffaf cam */
+            backdrop-filter: blur(25px) saturate(180%); /* Arkadaki canlı renkleri bulanıklaştırıp coşturur */
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Sınır çizgisi yok derecesinde */
+            border-top: 1px solid rgba(255, 255, 255, 0.2); /* Sadece üstte hafif ışık yansıması */
+            border-left: 1px solid rgba(255, 255, 255, 0.2); /* Sadece solda hafif ışık yansıması */
+            border-radius: 40px;
+            padding: 4rem 4.5rem;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5); /* Arka planla kusursuz bütünleşen yumuşak gölge */
+            transform: translateY(20px);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            position: relative;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        /* Profil Fotoğrafı Çerçevesi */
+        .profile-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            padding: 4px; /* Çerçeve kalınlığı */
+            background: var(--accent-gradient);
+            box-shadow: 0 0 30px var(--accent-glow);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .profile-wrapper:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.5);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top; /* Fotoğrafın üst kısmını (kafayı) merkeze alır */
+            border-radius: 50%;
+            background-color: #1e293b; /* Fotoğraf yüklenene kadar gösterilecek renk */
+            border: 4px solid var(--bg-color);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #f8fafc, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.8)); /* Yazıyı uzay arkaplanından koparan keskin gölge */
+        }
+
+        p.title {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* Navigasyon Linkleri */
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 Eşit simetrik buton dizilimi */
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            width: 100%;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            padding: 0.9rem 1rem;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            background: rgba(37, 99, 235, 0.25);
+            border: 1px solid rgba(0, 243, 255, 0.5);
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 243, 255, 0.15);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .nav-link:hover {
+            background: rgba(0, 243, 255, 0.2); /* Üzerine gelince neon coşkusu */
+            transform: translateY(-4px) scale(1.05); /* Havaya kalkma ve büyüme */
+            border-color: rgba(0, 243, 255, 1);
+            box-shadow: 0 8px 25px rgba(0, 243, 255, 0.4); /* Güçlü parlama */
+        }
+
+        /* İletişim Butonu */
+        .btn-contact {
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -10px var(--accent-color);
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -10px rgba(139, 92, 246, 0.6);
+            filter: brightness(1.1);
+        }
+
+        /* Özel Fare İmleci - Roket */
+        body, *, a {
+            /* Fareyi küçük bir rokete dönüştürür ve rengini uzay temasına (Mavi/Mor) filtreler ile uydurur! */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size: 24px; filter: hue-rotate(240deg) saturate(180%);'><text y='24'>🚀</text></svg>") 16 16, auto !important;
+        }
+
+        /* Fare Arkasında Bırakılan Gezegenler ve Yıldızlar */
+        .sparkle-trail {
+            position: absolute;
+            font-size: 0.9rem; /* Gezegenlerin daha küçük ve orantılı olmasını sağladım */
+            pointer-events: none; /* İmlecin tıklamasını engellememesi için */
+            z-index: 9999;
+            animation: fallAndFade 0.8s ease-out forwards;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4)); /* Hafif bir dış parlama */
+        }
+
+        @keyframes fallAndFade {
+            0% { opacity: 1; transform: scale(0.5) translateY(0) rotate(0deg); }
+            100% { opacity: 0; transform: scale(1.5) translateY(40px) rotate(180deg); } /* Düşerken büyüyüp dönmesi */
+        }
+
+        /* Arka Plan Sabit Parıltıları */
+        .bg-star {
+            position: absolute;
+            width: 2.5px;
+            height: 2.5px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            z-index: -2; /* En arkada kalsın, uzay resminin üzerinde ama kartın altında */
+            box-shadow: 0 0 15px 3px rgba(0, 243, 255, 0.9), 0 0 25px 5px rgba(255, 0, 127, 0.6); /* Daha güçlü neon mavi ve pembe ışıltı */
+            animation: twinkleBg 2s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes twinkleBg {
+            0% { opacity: 0.1; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1.8); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-container">
+        <!-- Profil Fotoğrafı Alanı -->
+        <div class="profile-wrapper">
+            <!-- 
+                Kullanıcı buraya kendi fotoğrafını ekleyecek. 
+                Fotoğrafı bu klasöre 'profil.jpg' adıyla eklerseniz otomatik olarak görünecektir. 
+                Eğer o isimde bir dosya yoksa, geçici bir fotoğraf gösterilir.
+            -->
+            <img src="profil.jpg" alt="Profil Fotoğrafı" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'">
+        </div>
+        
+        <h1>Merhaba, Ben Mehmet Emin</h1>
+        <p class="title">Data Science & Analytics Enthusiast</p>
+
+        <div class="nav-links">
+            <a href="görev2.html" class="nav-link">Bul Karayı Al Parayı</a>
+            <a href="erp_performans_grafikleri.png" class="nav-link" target="_blank">Grafik</a>
+            <a href="data.csv" class="nav-link" download>Data</a>
+        </div>
+
+        <a href="mailto:ornek@email.com" class="btn-contact">Benimle Çalışın</a>
+    </div>
+
+    <!-- Arka planda yanıp sönen sabit uzay parıltıları (Yıldızlar) -->
+    <script>
+        // Sayfa yüklendiğinde arka plana 70 tane rastgele parlayan yıldız atar
+        for (let i = 0; i < 70; i++) {
+            let star = document.createElement('div');
+            star.className = 'bg-star';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            // Her parıltının yanıp sönme hızı farklı olsun ki çok doğal dursun
+            star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            star.style.animationDelay = (Math.random() * 4) + 's';
+            
+            // Arada bir bazı yıldızları daha parlak ve renkli yapalım
+            if (Math.random() > 0.7) {
+                star.style.boxShadow = '0 0 20px 6px rgba(139, 92, 246, 0.8), 0 0 30px rgba(0, 243, 255, 1)';
+            }
+
+            document.body.appendChild(star);
+        }
+    </script>
+
+    <!-- Fare sürüklendiğinde roketin arkasından gezegen ve yıldızlar bırakmasını sağlayan özel kodlar -->
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            // Bilgisayarı yormamak ve çok kalabalık olmaması için ufak bir şans faktörü koyduk
+            if (Math.random() < 0.2) return; 
+
+            // Ekranda oluşturacağımız uzay cismi
+            let spaceObj = document.createElement('div');
+            spaceObj.className = 'sparkle-trail';
+            
+            // Yıldızlar ve Gezegenlerden oluşan kümemiz
+            const shapes = ['🪐', '🌍', '⭐', '🌟', '💫', '☄️', '🌕', '🌌'];
+            spaceObj.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+            
+            // Roketin arkasında çıkıyormuş gibi pozisyonlayalım (rastgele hafif sağa/sola)
+            spaceObj.style.left = (e.pageX - 10 + (Math.random() * 20 - 10)) + 'px';
+            spaceObj.style.top = (e.pageY + 10 + (Math.random() * 20 - 10)) + 'px';
+
+            // Bu yıldız tozunu fare hareket ettikçe HTML sayfasına yapıştırıyoruz
+            document.body.appendChild(spaceObj);
+
+            // Uzay döküntüleri sonsuza kadar kalmasın, 0.8 saniye sonra silinsinler
+            setTimeout(() => {
+                spaceObj.remove();
+            }, 800);
+        });
+    </script>
+
+</body>
+</html>
